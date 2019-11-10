@@ -46,14 +46,15 @@ class NewDeck extends Component {
             Keyboard.dismiss()
             handleSubmit({title, questions: []})
             this.clearLocalState()
-            this.toHome()
             saveDeckTitle(title)
+            this.toIndividualDeck(title)
         }
     }
 
-    toHome = () => {
-        this.props.navigation.dispatch(NavigationActions.back({key: 'NewDeck'}))
-    }
+    toIndividualDeck = (title) => {this.props.navigation.navigate(
+        'IndividualDeck',
+        {title}
+    )}
 
     render() {
         const {height: heightOfDeviceScreen} = Dimensions.get('window')
